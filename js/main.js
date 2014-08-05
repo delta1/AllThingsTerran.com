@@ -1,10 +1,39 @@
 var channels = [
+	'liquidtaeja',
 	'ForGG',
 	'AcerMMA',
 	'ktrolsterflash',
 	'Nathanias',
 	'EmpireHappy',
 	'optikdream'
+	// demuslim
+	// QuanticIllusion
+	// mvp
+	// bomber
+	// polt
+	// dragon
+	// ruff
+	// innovation
+	// maru
+	// jjakji
+	// major
+	// heromarine
+	// bbyong
+	// heart
+	// dayshi
+	// apocalypse
+	// TY
+	// Keen
+	// Supernova
+	// Select
+	// liquidbunny
+	// reality
+	// iaguz
+	// yoda happy neeb kas hack dream xenocider
+	// ryung
+	// marineking
+	// byun center
+	// HTOmario lagforce zan lucifron qxc theognis 
 ];
 var streamersDiv = $('#streamers');
 $(function(){
