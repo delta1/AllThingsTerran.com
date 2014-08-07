@@ -1,3 +1,6 @@
+// streamers
+// pro
+// community
 var channels = [
 	'liquidtaeja',
 	'ForGG',
@@ -5,7 +8,8 @@ var channels = [
 	'ktrolsterflash',
 	'Nathanias',
 	'EmpireHappy',
-	'optikdream'
+	'optikdream',
+	'filtersc'
 	// demuslim
 	// QuanticIllusion
 	// mvp
@@ -40,22 +44,16 @@ $(function(){
 	console.log('dom ready');
 	$.each(channels, function(k ,channelName) {
 
-		$.getJSON(
-			'http://api.justin.tv/api/stream/list.json?channel=' + channelName + '&jsonp=?',
-			function (twitchData) {
+		$.ajax({ 
+			type:'GET',
+			dataType:'jsonp',
+			url:'https://api.twitch.tv/kraken/streams/' + channelName,
+			success: function (twitchData) {
+				console.log(twitchData);
 				var streamerText = '';
-				if (twitchData && twitchData[0]) {
-					if (twitchData[0].stream_type && twitchData[0].stream_type === 'live') {
-						// live
-						//$(elementSelector).html(onlineHTML)
-						streamerText = channelName + ': <a target="_blank" href="http://www.twitch.tv/'+channelName+'">live</a>';
+				if (twitchData && twitchData.stream) {
+						streamerText = channelName + ': <a target="_blank" href="http://www.twitch.tv/'+channelName+'">online</a>';
 						console.log(streamerText);
-					} else {
-						// something other than live
-						//$(elementSelector).html(offlineHTML)
-						streamerText = channels[k] + ': offline';
-						console.log(streamerText);
-					}
 				} else {
 					// no data or invalid data from twitch
 					//$(elementSelector).html(offlineHTML)
@@ -64,6 +62,6 @@ $(function(){
 				}
 				streamersDiv.append($('<p>').html(streamerText));
 			}
-			)
+		})
 	});
 });
