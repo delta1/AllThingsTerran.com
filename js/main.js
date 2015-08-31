@@ -41,7 +41,6 @@ var channels = [
 ];
 var streamersDiv = $('#streamers');
 $(function(){
-	console.log('dom ready');
 	$.each(channels, function(k ,channelName) {
 
 		$.ajax({ 
@@ -49,16 +48,13 @@ $(function(){
 			dataType:'jsonp',
 			url:'https://api.twitch.tv/kraken/streams/' + channelName,
 			success: function (twitchData) {
-				console.log(twitchData);
 				var streamerText = '';
 				if (twitchData && twitchData.stream) {
 						streamerText = channelName + ': <a target="_blank" href="http://www.twitch.tv/'+channelName+'">online</a>';
-						console.log(streamerText);
 				} else {
 					// no data or invalid data from twitch
 					//$(elementSelector).html(offlineHTML)
 						streamerText = channelName + ': offline';
-						console.log(streamerText);
 				}
 				streamersDiv.append($('<p>').html(streamerText));
 			}
